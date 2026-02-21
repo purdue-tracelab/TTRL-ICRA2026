@@ -47,7 +47,7 @@ More clips with caption and hardware experiments can be found in our paper [vide
 ## Installation
 
 
-- Install Isaac Lab by following the [conda installation](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html).
+- Install Isaac Lab by following the [conda installation](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html). We tested our policy using IsaacSim 4.5.0 and we notice a significant performance drop of the same training config in updated IsaacSim 5.0+. 
 ```bash
 conda create -n ttrl python=3.11
 conda activate ttrl
@@ -68,13 +68,14 @@ isaacsim
 - Using a python interpreter that has Isaac Lab installed, install the library
 
 ```bash
-cd ttrl
+cd TTRL-ICRA2026 
 pip install -e .
 ```
 - Using the same python interpreter, install the customized rsl_rl library
 ```bash
 cd rsl_rl
 pip install -e .
+cd ..
 ```
 
 
