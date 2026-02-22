@@ -105,7 +105,7 @@ python -m legged_lab.scripts.train \
 tensorboard --logdir logs
 ```
 
-- Play with predictor inference and visualization enabled (modify the run and checkpoint accordingly):
+- Evaluation with predictor inference and visualization enabled (modify the run and checkpoint accordingly), the task `t1_tt_eval` specifies serving range (can be changed under `legged_lab.envs.t1_tt.t1_tt_config`):
 
 ```bash
 python -m legged_lab.scripts.eval \
