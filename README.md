@@ -47,23 +47,12 @@ More clips with caption and hardware experiments can be found in our paper [vide
 ## Installation
 
 
-- Install Isaac Lab by following the [conda installation](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html). We tested our policy using IsaacSim 4.5.0 and we notice a significant performance drop of the same training config in updated IsaacSim 5.0+. 
-```bash
-conda create -n ttrl python=3.11
-conda activate ttrl
-
-pip install --upgrade pip
-
-pip install "isaacsim[all,extscache]==5.1.0" --extra-index-url https://pypi.nvidia.com
-
-pip install -U torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
-```
-- Verify installation and accept EULA
-```bash
-isaacsim
-```
+- Install **IssacSim 4.5.0 + Isaac Lab 2.1.0** by following the [conda installation](https://isaac-sim.github.io/IsaacLab/v2.1.0/source/setup/installation/pip_installation.html). **Note:** We developed and tested our policy using IsaacSim 4.5.0 and we notice a significant performance drop of the same training config in updated IsaacSim 5.0+. 
 
 - Clone this repository separately from the Isaac Lab installation (i.e., outside the `IsaacLab` directory):
+```bash
+https://github.com/purdue-tracelab/TTRL-ICRA2026.git
+```
 
 - Using a Python interpreter that has Isaac Lab installed, install the library
 
