@@ -19,19 +19,19 @@ This is the official implementation of ICRA 2026 paper: [Towards Versatile Human
 
 - In simulation, a physics-based predictor provides accurate future ball states to (i) supervise the learned predictor and (ii) build dense, immediate rewards (instead of sparse “did you return the ball?” signals). 
 
-- Results (sim): High performance across long/short/mixed serves, reporting hit rate ≥ 96% and success/return rate ≥ 92% (mixed serves ~94% success). Ablations show both the predictor and prediction-based rewards are crucial. 
+- Results (sim): High performance across long/short/mixed serves, reporting hit rate ≥ 96% and success/return rate ≥ 92% (mixed serves ~94% success) (We tested under IsaacSim 4.5.0, upgrading IsaacSim to 5.0.0+ degrades success rate). Ablations show that both the predictor and prediction-based rewards are crucial. 
 
 ## Simulation Demos
 - 🔴 **Red ball:** the table tennis ball in simulation.
 - 🟢 **Green ball (physics-based future ball prediction):** The analytical/physics predictor is visualized as the green ball.
 - 🟡 **Yellow ball (learned prediction):** The learned predictor output is visualized as the yellow ball.
-- 🔵 **Blue ball:** A heuristic target body position for fore hand hitting.
+- 🔵 **Blue ball:** A heuristic target body position for forehand hitting.
 
-We only use learned prediction 🟡 before hitting, and after hitting is considered OOD for predictor, explaining why it is drifting.
+We only use learned prediction 🟡 before hitting, and after hitting is considered OOD for the predictor, explaining why it is drifting.
 
 [2_predictor.webm](https://github.com/user-attachments/assets/30f7c1fb-e437-478f-a0a7-2f607d5957bd)
 
-We construct a hitting heuristic (fore hand only) of target body position 🔵, visualized by blue ball, which encourage the robot to move proactively by reward design.
+We construct a hitting heuristic (forehand only) of target body position 🔵, visualized by a blue ball, which encourages the robot to move proactively by reward design.
 
 [3_pre-contact.webm](https://github.com/user-attachments/assets/a2d9412a-61ce-436d-9be0-dd907fb8af78)
 
@@ -63,15 +63,15 @@ pip install -U torch==2.7.0 torchvision==0.22.0 --index-url https://download.pyt
 isaacsim
 ```
 
-- Clone this repository separately from the Isaac Lab installation (i.e. outside the `IsaacLab` directory):
+- Clone this repository separately from the Isaac Lab installation (i.e., outside the `IsaacLab` directory):
 
-- Using a python interpreter that has Isaac Lab installed, install the library
+- Using a Python interpreter that has Isaac Lab installed, install the library
 
 ```bash
 cd TTRL-ICRA2026 
 pip install -e .
 ```
-- Using the same python interpreter, install the customized rsl_rl library
+- Using the same Python interpreter, install the customized rsl_rl library
 ```bash
 cd rsl_rl
 pip install -e .
@@ -86,7 +86,7 @@ python legged_lab/scripts/train.py --task=t1_tt --logger=tensorboard --num_envs=
 ```
 
 
-## Traning and Evaluation
+## Training and Evaluation
 
 An optional auxiliary predictor can be enabled for the `t1_tt` task to learn a small MLP that predicts the ball's future pose. Use the `--predictor` flag to switch the runner to the predictor-augmented version.
 
@@ -112,27 +112,17 @@ python -m legged_lab.scripts.eval \
   --task=t1_tt_eval \
   --num_envs=16 \
   --load_run 2026-02-14_16-12-07 \
-  --checkpoint model_9999.pt \
+  --checkpoint model_9000.pt \
   --predictor
 ```
 
 Notes:
 - The predictor runner saves its weights inside the training checkpoint. When playing, pass `--predictor` to load these weights and run inference each step. If a checkpoint was trained without `--predictor`, it won’t contain predictor weights.
 - Predictor hyperparameters can be configured under the agent config (e.g., `T1TableTennisAgentCfg.predictor`).
-- During play, the predictor’s output is fed to the environment and a separate orange sphere visualizes the predicted ball position.
+- During play, the predictor’s output is fed to the environment, and a separate orange sphere visualizes the predicted ball position.
 
 
-<!-- 
-- Train the robot agents by replacing `--task` by your desired robot:
 
-```bash
-python legged_lab/scripts/train.py --task=digit_flat --headless --logger=tensorboard 
-```
-- Play the robot agents by replacing `--task` by your desired robot. It will automatically load your most recent trained poliy under `logs\{task}` folder:
-
-```bash
-python legged_lab/scripts/play.py --task=digit_flat --num_env 32
-``` -->
 
 
 
@@ -141,7 +131,7 @@ python legged_lab/scripts/play.py --task=digit_flat --num_env 32
 
 ## Acknowledgements
 
-This repository is bult upon prior works including:
+This repository is built upon prior work,s including:
 
 - **[LeggedLab](https://github.com/Hellod035/LeggedLab)** – Built by Wandong Sun, this project provides the foundation and framework structure.  
 - **[IsaacLab](https://github.com/isaac-sim/IsaacLab)** – The modular, reusable IsaacLab components greatly simplify environment and agent definitions.  
