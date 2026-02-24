@@ -13,8 +13,8 @@ import argparse
 
 from isaaclab.app import AppLauncher
 
-from rsl_rl.rsl_rl.runners import OnPolicyRunner
-from rsl_rl.rsl_rl.runners import OnPolicyPredictorRegressionRunner
+from rsl_rl.runners import OnPolicyRunner
+from rsl_rl.runners import OnPolicyPredictorRegressionRunner
 
 from legged_lab.utils import task_registry
 
